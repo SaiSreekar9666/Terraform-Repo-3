@@ -21,6 +21,7 @@ pipeline{
         stage('deploy-stage'){
             steps('deplot-stage'){
                 echo 'Deployed succesfully'
+                echo 'Sai'
             }
         }
         stage('checking memory,disc storage and ports'){
