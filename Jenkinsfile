@@ -1,4 +1,8 @@
 pipeline{
+    environment{
+        AWS_ACCESS_KEY = credentials('AWS_ACCESS_KEY')
+        AWS_SECRET_KEY = credentials('AWS_SECRET_KEY')
+    }
     agent{
         node{
             label 'terraform'
@@ -20,19 +24,19 @@ pipeline{
         }
         stage('terraform plan'){
             steps{
-                sh 'terraform plan -var-file="terraform.tfvars"'
+                sh 'terraform plan'
                 echo 'planned successfully'
             }
         }
-        stage('terraform apply -var-file= "terraform.tfvars"'){
+        stage('terraform apply'){
             steps{
-                sh 'terraform apply -var-file="terraform.tfvars"'
+                sh 'terraform apply'
                 echo 'Successfully Applied'
             }
         }
         stage('terraform destroy'){
             steps{
-                sh 'terraform destroy -var-file="terrraform.tfvars"'
+                sh 'terraform destroy'
                 echo 'successfully destroy'
             }
         }
