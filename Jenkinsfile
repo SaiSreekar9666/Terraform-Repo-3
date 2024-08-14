@@ -4,7 +4,7 @@ pipeline{
             label 'terraform'
         }
     }
-    stagess{
+    stages{
         stage('terraform init'){
             steps{
                 sh 'terraform init'
