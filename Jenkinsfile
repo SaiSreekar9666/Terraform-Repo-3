@@ -4,7 +4,7 @@ pipeline{
             label 'terraform'
         }
     }
-    stages{
+    stagess{
         stage('terraform init'){
             steps{
                 sh 'terraform init'
@@ -20,14 +20,20 @@ pipeline{
         }
         stage('terraform plan'){
             steps{
-                sh 'terraform plan'
+                sh 'terraform plan -var-file="terraform.tfvars"'
                 echo 'planned successfully'
             }
         }
-        stage('terraform apply'){
+        stage('terraform apply -var-file= "terraform.tfvars"'){
             steps{
-                sh 'terraform apply'
+                sh 'terraform apply -var-file="terraform.tfvars"'
                 echo 'Successfully Applied'
+            }
+        }
+        stage('terraform destroy'){
+            steps{
+                sh 'terraform destroy -var-file="terrraform.tfvars"'
+                echo 'successfully destroy'
             }
         }
     }
