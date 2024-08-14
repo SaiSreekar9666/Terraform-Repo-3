@@ -7,6 +7,11 @@ pipeline {
     }
 
     stages {
+        stage(git checkout){
+            steps{
+                checkout scm
+            }
+        }
         stage('Terraform Init') {
             steps {
                 script {
