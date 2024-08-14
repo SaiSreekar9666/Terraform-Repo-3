@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        node{
+            label 'terraform'
+        }
+    }
 
     environment {
         AWS_ACCESS_KEY_ID     = credentials('aws-access-key-id') // Jenkins credentials ID for AWS access key
@@ -55,7 +59,9 @@ pipeline {
 
     post {
         always {
-            cleanWs()
+            script{
+                cleanWs()
+            }
         }
     }
 }
