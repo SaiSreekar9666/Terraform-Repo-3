@@ -5,6 +5,12 @@ pipeline {
         }
     }
     stages {
+        stage{
+            steps('Checkout'){
+                Checkout
+                echo 'successfully checkedout'
+            }
+        }
         stage('terraform init'){
             steps{
                 sh 'terraform init'
