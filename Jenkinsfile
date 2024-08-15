@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage{
             steps('Checkout'){
-                Checkout
+                git url:'https://github.com/SaiSreekar9666/explain.git' branch:'pipeline-terraform'
                 echo 'successfully checkedout'
             }
         }
@@ -20,7 +20,6 @@ pipeline {
             steps{
                 sh 'terraform validate'
                 sh 'pwd'
-                echo 'pwd'
                 echo 'validation successfull' 
             }
         }
