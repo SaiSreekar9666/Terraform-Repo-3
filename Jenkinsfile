@@ -14,6 +14,7 @@ pipeline {
             steps{
                 sh 'terraform validate'
                 sh 'pwd'
+                echo 'pwd'
                 echo 'validation successfull' 
             }
         }
