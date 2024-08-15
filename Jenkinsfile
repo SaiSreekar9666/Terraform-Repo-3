@@ -8,7 +8,7 @@ pipeline {
         stage{
             steps('Checkout'){
                 git url:'https://github.com/SaiSreekar9666/explain.git' branch:'pipeline-terraform'
-                echo 'successfully checkedout'
+                echo 'successfully checkedout isisis'
             }
         }
         stage('terraform init'){
