@@ -5,11 +5,6 @@ pipeline {
         }
     }
     stages {
-        stage('Checkout'){
-            steps{
-                git 'https://github.com/SaiSreekar9666/explain.git'
-            }
-        }
         stage('terraform init'){
             steps{
                 sh 'terraform init'
