@@ -18,8 +18,8 @@ pipeline {
         }
         stage('terraform plan'){
             environment {
-                AWS_ACCESS_KEY_ID = credentials('aws-access-key-id')
-                AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
+                AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY-ID')
+                AWS_SECRET_ACCESS_KEY = credentials('AWS-SECRET-ACCESS-KEY')
             }
             steps{
                 sh 'terraform plan'
