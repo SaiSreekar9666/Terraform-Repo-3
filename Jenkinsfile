@@ -13,6 +13,7 @@ pipeline {
         stage('terraform validate'){
             steps{
                 sh 'terraform validate'
+                sh 'pwd'
                 echo 'validation successfull' 
             }
         }
