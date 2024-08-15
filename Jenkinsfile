@@ -39,7 +39,7 @@ pipeline {
             }
             steps{
                 sh 'terraform apply -auto-approve'
-                echo 'applied successfull'
+                echo 'applied successfully'
             }
         }
         stage('terraform destroy'){
