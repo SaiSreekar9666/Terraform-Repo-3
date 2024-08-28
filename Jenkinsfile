@@ -24,8 +24,19 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 
-                    sh 'terraform plan -var-file="terraform.tfvars"'  // Run Terraform plan
+                    sh 'terraform plan -out="terraform.tfvars"'  // Run Terraform plan
                 }
+            }
+        }
+        stage('terraform Apply'){
+            steps{
+                sh 'terraform apply -var-file="terraform.tfvars"'
+
+            }
+        }
+        stage('terraform destory'){
+            steps{
+                sh 'terraform destory -var-file="terraform.tfvars"'
             }
         }
     }
