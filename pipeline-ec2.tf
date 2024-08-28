@@ -8,7 +8,7 @@ provider "aws" {
 
 
 resource "aws_instance" "name" {
-    key_name = "docker.pem"
+    key_name = "'jenkins (2).pem'.pem"
     ami = "ami-0a0e5d9c7acc336f1"
     instance_type = "t2.micro"
     tags = {
