@@ -23,17 +23,17 @@ pipeline {
         }
         stage('Terraform Plan') {
             steps {
-                sh 'terraform plan -var-file = terraform.tfvars'  // Run Terraform plan and save it to a file
+                sh 'terraform plan -var-file=terraform.tfvars -out=terraform.tfplan'  // Run Terraform plan and save it to a file
             }
         }
         stage('Terraform Apply') {
             steps {
-                sh 'terraform apply -var-file = terraform.tfvars '  // Apply the saved plan
+                sh 'terraform apply terraform.tfplan'  // Apply the saved plan
             }
         }
         stage('Terraform Destroy') {
             steps {
-                sh 'terraform destroy -auto-approve -var-file="terraform.tfvars"'  // Destroy infrastructure with confirmation
+                sh 'terraform destroy -auto-approve -var-file=terraform.tfvars'  // Destroy infrastructure with confirmation
             }
         }
     }
