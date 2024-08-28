@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Terraform Apply') {
             steps {
-                sh 'terraform apply -var-file= "terraform.tfvars" -auto-approve'  // Apply the saved plan
+                sh 'terraform apply -var-file= "terraform.tfvars"'  // Apply the saved plan
             }
         }
         stage('Terraform Destroy') {
