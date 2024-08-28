@@ -24,7 +24,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 
-                    sh 'terraform plan -var-file=".tfvars"'  // Run Terraform plan
+                    sh 'terraform plan -var-file="terraform.tfvars"'  // Run Terraform plan
                 }
             }
         }
