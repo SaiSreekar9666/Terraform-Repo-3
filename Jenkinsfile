@@ -1,9 +1,9 @@
 pipeline {
     agent {
-        node{
-            label 'terraform'
+        node {
+            label 'terraform'  // Specifies the agent with the label 'terraform'
         }
-    }  // Specifies that this pipeline can run on any available agent
+    }
 
     stages {
         stage('Checkout SCM') {
@@ -23,20 +23,17 @@ pipeline {
         }
         stage('Terraform Plan') {
             steps {
-                
-                    sh 'terraform plan -out="terraform.tfvars"'  // Run Terraform plan
-                }
+                sh 'terraform plan -out=terraform.tfplan'  // Run Terraform plan and save it to a file
             }
         }
-        stage('terraform Apply'){
-            steps{
-                sh 'terraform apply -var-file="terraform.tfvars"'
-
+        stage('Terraform Apply') {
+            steps {
+                sh 'terraform apply terraform.tfplan -auto-approve'  // Apply the saved plan
             }
         }
-        stage('terraform destory'){
-            steps{
-                sh 'terraform destory -var-file="terraform.tfvars"'
+        stage('Terraform Destroy') {
+            steps {
+                sh 'terraform destroy -auto-approve -var-file="terraform.tfvars"'  // Destroy infrastructure with confirmation
             }
         }
     }
@@ -49,4 +46,4 @@ pipeline {
             echo 'Pipeline failed.'
         }
     }
-
+}
