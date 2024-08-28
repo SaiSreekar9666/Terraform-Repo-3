@@ -13,7 +13,7 @@ pipeline{
         stage('terraform init'){
             steps{
                 sh 'terraform init'
-                sh 'aws sts get-caller-identity'
+                echo 'initalized successfully'
             }
         }
         stage('terraform validate'){
