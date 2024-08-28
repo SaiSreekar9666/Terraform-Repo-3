@@ -2,7 +2,7 @@ pipeline{
     agent{
         node{
             label 'terraform'
-        }
+
     }
     stages{
         stage('Checkout SCM'){
@@ -17,18 +17,12 @@ pipeline{
         }
         stage('terraform validate'){
             steps{
-
-                sh 'terraform validate'
+                sh 'terrafomr validate'
             }
         }
         stage('terraform plan'){
             steps{
-                withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-credentials-id', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-
-                
-                sh "'terraform plan -var=accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-credentials-id', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY' "
-                echo 'succesfully planned'
-            }  
+                sh 'terraform plan -var-file="terraform.tfvars"'
             }
         }
     }
