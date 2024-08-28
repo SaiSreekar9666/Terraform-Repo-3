@@ -1,5 +1,6 @@
-pipeline{
-    agent{
+pipeline {
+    
+    agent {
         node{
             label 'terraform'
 
