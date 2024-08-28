@@ -23,12 +23,12 @@ pipeline {
         }
         stage('Terraform Plan') {
             steps {
-                sh 'terraform plan -out="terraform.tfvars"'  // Run Terraform plan and save it to a file
+                sh 'terraform plan -var-file="terraform.tfvars"'  // Run Terraform plan and save it to a file
             }
         }
         stage('Terraform Apply') {
             steps {
-                sh 'terraform apply terraform.tfvars'  // Apply the saved plan
+                sh 'terraform apply -var-file="terraform.tfvars" '  // Apply the saved plan
             }
         }
         stage('Terraform Destroy') {
