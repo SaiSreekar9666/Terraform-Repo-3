@@ -18,6 +18,9 @@ pipeline{
         }
         stage('terraform validate'){
             steps{
+                
+                withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-credentials-id', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')])
+
                 sh 'terraform validate'
             }
         }
