@@ -5,10 +5,14 @@ pipeline{
         }
     }
     stages{
+        stage('Checkout SCM'){
+            steps{
+                checkout scm
+            }
+        }
         stage('terraform init'){
             steps{
                 sh 'terraform init'
-                echo 'succesfully initalized'
                 sh 'aws sts get-caller-identity'
             }
         }
