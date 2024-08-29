@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Terraform Plan') {
             steps {
-                sh 'terraform plan -out="terraform.tfplan"'  // Run Terraform plan and save it to a file
+                sh 'terraform plan -out=terraform.tfplan'  // Run Terraform plan and save it to a file
             }
         }
         stage('Terraform Apply') {
