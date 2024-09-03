@@ -11,6 +11,12 @@ pipeline {
                 checkout scm  // Checkout source code
             }
         }
+        stage ('test') {
+            steps {
+                sh 'ls -l'
+            }
+        }
+        
         stage('Terraform Init') {
             steps {
                 sh 'terraform init'  // Initialize Terraform
